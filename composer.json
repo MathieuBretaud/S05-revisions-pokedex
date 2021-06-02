@@ -1,17 +1,13 @@
 {
-    "name": "fabio/pokedex",
-    "description": "Small pokedex for educational purpose",
-    "type": "project",
+    "name": "student/s05-revisions-pokedex",
     "authors": [
         {
-            "name": "Fabio",
-            "email": "fabio@oclock.io"
+            "name": "MathieuBretaud",
+            "email": "mathieu.bretaud@gmail.com"
         }
     ],
     "require": {
-        "altorouter/altorouter": "^1.2"
-    },
-    "autoload": {
-        "psr-4": {"Pokedex\\": "app/"}
+        "altorouter/altorouter": "^2.0",
+        "symfony/var-dumper": "^5.3"
     }
 }
