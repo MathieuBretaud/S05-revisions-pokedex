@@ -71,6 +71,25 @@ class Type
         return $pokemon;
 
     }
+    public function findAllTypePokemons()  
+    {
+        $sql = '
+        SELECT *
+        FROM type
+        ';
+
+        // On récupère la connexion à PDO
+        $pdo = Database::getPDO();
+
+        // On exécute la requête
+        $pdoStatement = $pdo->query($sql);
+
+        // On récupère un tableau d'objets de type character
+        $pokemon = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'type');
+
+        // On le renvoie
+        return $pokemon;
+    }
 
     /**
      * Get the value of color

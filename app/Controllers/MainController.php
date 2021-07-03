@@ -51,6 +51,46 @@ class MainController
         $this->show('type_pokemon', $viewVars);
     }
 
+    public function parType()
+    {
+        
+        $typeModel = new Type();
+        $pokemons = $typeModel->findAllTypePokemons();
+
+        $this->show('parType', [
+             'pokemons'=>$pokemons
+        ]);
+    }
+
+
+    public function homeTypes($params)
+    {
+        // On récupère l'id de la marque
+        $typeId = $params['id'];
+
+        $pokemonModel = new Pokemon();
+        $pokemons = $pokemonModel->findAllPokemon();
+        // On va chercher les produits du type demandé
+        
+        $typesModel = new Pokemon_type();
+        $typePokemon = $typesModel->findTypes($typeId);
+        // dd($products);
+
+        // On va chercher les infos du type demandé
+        $typeModel = new Type();
+        $type = $typeModel->find($typeId);
+
+        // Les données de la vue
+        $viewVars = [
+            'type' => $type,
+            'pokemons' => $pokemons,
+            'comp' => $typePokemon,
+        ];
+
+        // On appelle la méthode qui affiche le template
+        $this->show('hometype', $viewVars);
+    }
+
     protected function show($viewName, $viewVars = []) {
 
         // $viewVars est disponible dans chaque fichier de vue

@@ -30,6 +30,30 @@ class Pokemon_type
 
     }
 
+    public function findTypes(int $id)
+    {
+        $sql = "SELECT pokemon_type.*, pokemon.nom AS pokemon_nom, type.name AS type_name
+        FROM pokemon_type
+        INNER JOIN pokemon ON pokemon_type.pokemon_numero = pokemon.numero
+        LEFT JOIN type ON pokemon_type.type_id = type.id
+        WHERE type.id = {$id}";
+
+
+        // On récupère la connexion à PDO
+        $pdo = Database::getPDO();
+
+        // On exécute la requête
+        $pdoStatement = $pdo->query($sql);
+
+        // On récupère un tableau d'objets de type character
+        $pokemon = $pdoStatement->fetchAll(PDO::FETCH_CLASS, 'Pokemon_type');
+
+        // On le renvoie
+        return $pokemon;
+
+    }
+
+
     /**
      * Get the value of type_id
      */ 

@@ -10,6 +10,7 @@ require __DIR__ . '/../app/Models/Pokemon_type.php';
 
 
 
+
 $router = new AltoRouter();
 //On définit le chemin de base de notre dossier de travail sur localhost
 $router->setBasePath($_SERVER['BASE_URI']);
@@ -40,6 +41,35 @@ $router->map(
     ],
     // Nom interne de la route
     'type'
+);
+
+
+$router->map(
+    // Méthode HTTP
+    'GET',
+    // La motif de l'URL (la route)
+    '/parTypes/',
+    // Destination de la route = page que l'on souhaite afficher
+    [
+        'controller' => 'MainController',
+        'method' => 'parType',
+    ],
+    // Nom interne de la route
+    'parType'
+);
+//classer par types
+$router->map(
+    // Méthode HTTP
+    'GET',
+    // La motif de l'URL (la route)
+    '/homeTypes/[i:id]',
+    // Destination de la route = page que l'on souhaite afficher
+    [
+        'controller' => 'MainController',
+        'method' => 'homeTypes',
+    ],
+    // Nom interne de la route
+    'hometypes'
 );
 
 

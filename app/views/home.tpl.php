@@ -1,5 +1,6 @@
 <body class=" text-center" style= "background-color : #c14040">
 <div class="row ">
+
 <?php foreach($viewVars["pokemons"] as $pokemon ): ?>
 <div class="col ">
 <div class="card  m-2 " style="width: 20rem ; background-color :#ab3838 ;border-radius:30px">
